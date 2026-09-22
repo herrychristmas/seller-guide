@@ -334,6 +334,186 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
   .card-foot{font-size:9px}
 }
 
+
+/* ===== V6: stronger first-screen tap affordance ===== */
+.entry{
+  min-height:calc(100svh - 64px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  padding:42px 0 38px;
+}
+.entry-inner{
+  width:100%;
+}
+.rings{
+  margin-bottom:22px;
+}
+.entry h1{
+  margin:12px 0 0;
+}
+.tap{
+  position:relative;
+  bottom:auto;
+  margin-top:30px;
+  min-width:238px;
+  min-height:54px;
+  padding:8px 18px 8px 9px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-start;
+  gap:12px;
+  border:1px solid rgba(0,196,0,.58);
+  background:linear-gradient(180deg,#242824,#1b1e1b);
+  color:#fff;
+  box-shadow:
+    0 8px 24px rgba(0,0,0,.28),
+    inset 0 1px 0 rgba(255,255,255,.07),
+    0 0 0 4px rgba(0,196,0,.055);
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  transition:transform .13s ease,background .13s ease,box-shadow .13s ease;
+}
+.tap-dot{
+  width:38px;height:38px;
+  flex:0 0 38px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  background:var(--green);
+  color:#081108;
+  font-size:17px;
+  font-weight:950;
+  box-shadow:0 0 0 0 rgba(0,196,0,.28);
+  animation:tapHint 1.8s ease-out infinite;
+}
+.tap:hover{
+  background:#252a25;
+  transform:translateY(-2px);
+}
+.tap:active{
+  transform:translateY(2px) scale(.965);
+  background:#121512;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.34),
+    inset 0 2px 5px rgba(0,0,0,.38),
+    0 0 0 2px rgba(0,196,0,.13);
+}
+.entry.is-pressed .tap{
+  transform:scale(.94);
+  opacity:.72;
+}
+@keyframes tapHint{
+  0%{box-shadow:0 0 0 0 rgba(0,196,0,.28)}
+  70%,100%{box-shadow:0 0 0 10px rgba(0,196,0,0)}
+}
+@media(max-width:720px){
+ .entry{
+   min-height:calc(100svh - 56px);
+   padding:34px 0 30px;
+ }
+ .rings{margin-bottom:18px}
+ .entry h1{margin-top:10px}
+ .tap{
+   margin-top:26px;
+   min-width:224px;
+   min-height:52px;
+   font-size:13px;
+ }
+ .tap-dot{width:36px;height:36px;flex-basis:36px}
+}
+
+
+/* ===== V7: compact secondary hierarchy ===== */
+.more-head{margin-bottom:13px}
+.more h3{font-size:22px;line-height:1.25}
+.more-grid{
+  grid-template-columns:.72fr 1.28fr;
+  align-items:stretch;
+}
+.tip{
+  order:0;
+  padding:16px 18px;
+}
+.tip h4{
+  font-size:19px;
+  line-height:1.28;
+  margin:0 0 6px;
+}
+.tip p{
+  font-size:12px;
+  line-height:1.45;
+}
+.list{order:1}
+.row{padding:13px 0}
+.row strong{font-size:14px}
+.row span.desc{font-size:11px}
+.other-head{margin-bottom:11px}
+.other h3{
+  font-size:18px;
+  line-height:1.25;
+}
+.chips{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  overflow:visible;
+  padding:0;
+}
+.chip{
+  min-width:0;
+  padding:12px 10px;
+  font-size:12px;
+  line-height:1.3;
+  white-space:normal;
+  text-align:left;
+  gap:6px;
+}
+.chip:after{flex:0 0 auto}
+@media(max-width:720px){
+ .more h3{font-size:19px}
+ .more-grid{
+   grid-template-columns:1fr;
+   gap:9px;
+ }
+ .tip{
+   order:0;
+   padding:15px 16px;
+ }
+ .tip h4{
+   font-size:18px;
+   line-height:1.25;
+ }
+ .tip p{font-size:11px}
+ .list{order:1}
+ .row{padding:12px 0}
+ .row strong{font-size:13px}
+ .row span.desc{font-size:10px}
+ .other h3{font-size:17px}
+ .chips{
+   grid-template-columns:repeat(4,minmax(0,1fr));
+   gap:5px;
+   margin-right:0;
+   padding-right:0;
+ }
+ .chip{
+   min-width:0;
+   padding:10px 6px;
+   font-size:10px;
+   line-height:1.25;
+   border-radius:10px;
+   justify-content:center;
+   text-align:center;
+ }
+ .chip:after{display:none}
+}
+@media(max-width:380px){
+ .chips{gap:4px}
+ .chip{padding:9px 4px;font-size:9px}
+}
+
 </style>
 </head>
 <body>
@@ -349,7 +529,7 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
   <small>QR에서 선택한 고민이 도착했어요</small>
   <h1>놓치기 쉬운<br><em>판매 소식,</em> 챙겨보고 계신가요?</h1>
  </div>
- <button class="tap" id="tap">눌러서 답변 확인하기 &nbsp;→</button>
+ <button class="tap" id="tap"><span class="tap-dot">↗</span><span>눌러서 답변 확인하기</span></button>
 </section>
 
 <main class="content" id="content">
@@ -401,11 +581,6 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
    <h3>조금 더 살펴볼 수 있어요</h3>
   </div>
   <div class="more-grid">
-   <div class="list">
-    <a class="row" href="#"><span class="n">01</span><div><strong>판매 인사이트 보기</strong><span class="desc">시장과 카테고리 흐름 확인</span></div><span class="go">→</span></a>
-    <a class="row" href="#"><span class="n">02</span><div><strong>셀러 스토리 보기</strong><span class="desc">다른 셀러의 운영·성장 사례</span></div><span class="go">→</span></a>
-    <a class="row" href="#"><span class="n">03</span><div><strong>온라인 교육 확인하기</strong><span class="desc">필요한 주제만 골라 학습</span></div><span class="go">→</span></a>
-   </div>
    <aside class="tip">
     <div>
       
@@ -414,6 +589,8 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
     </div>
     
    </aside>
+   <div class="list">
+    <a class="row" href="#"><span class="n">01</span><div><strong>판매 인사이트 보기</strong><span class="desc">시장과 카테고리 흐름 확인</span></div>
   </div>
  </section>
 
