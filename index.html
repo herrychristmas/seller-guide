@@ -5,152 +5,253 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Seller Guide — 판매 소식</title>
 <style>
-:root{--bg:#141414;--panel:#1b1b1b;--panel2:#202020;--line:#303030;--text:#fff;--muted:#919691;--green:#00C400;--green-soft:#8af39a}
-*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text)}
+:root{
+  --bg:#141414;--panel:#1b1b1b;--panel2:#202020;--line:#3a3a3a;
+  --text:#fff;--muted:#a6aba6;--green:#00C400;--green-dark:#009a00;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text)}
 body{font-family:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans KR",sans-serif;word-break:keep-all}
-a{color:inherit;text-decoration:none}.app{width:min(100%,1040px);margin:auto;padding:0 34px 80px}
-.top{height:70px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #252525}
-.logo{font-size:14px;font-weight:800}.logo b{color:var(--green)}.top small{font-size:10px;color:#666}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+.app{width:min(100%,1040px);margin:auto;padding:0 34px 72px}
+.top{height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #292929}
+.logo{font-size:15px;font-weight:800}.logo b{color:var(--green)}
+.top small{font-size:11px;color:#858585}
 
-/* intro is always visible initially; no display:none dependency */
-.entry{min-height:calc(100svh - 70px);display:grid;place-items:center;text-align:center;position:relative}
-.entry-inner{transition:.55s ease}
-.rings{width:150px;height:150px;display:grid;place-items:center;position:relative;margin:0 auto 30px}
-.ring{position:absolute;border:1px solid rgba(0,196,0,.34);border-radius:50%;animation:pulse 1.65s ease-out infinite}
-.r1{width:70px;height:70px}.r2{width:108px;height:108px;animation-delay:.2s}.r3{width:148px;height:148px;animation-delay:.4s}
-.center{width:60px;height:60px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;font-weight:900;font-size:22px}
-.entry small{font-size:11px;color:#777}.entry h1{font-size:31px;line-height:1.28;letter-spacing:-.055em;margin:12px 0 8px}.entry h1 em{font-style:normal;color:var(--green)}
-.entry p{font-size:12px;color:#747974;margin:0}
-.skip{position:absolute;bottom:36px;border:0;background:transparent;color:#666;font-size:11px;cursor:pointer}
-@keyframes pulse{0%{transform:scale(.72);opacity:0}35%{opacity:1}100%{transform:scale(1.08);opacity:0}}
+/* QR entry */
+.entry{
+  min-height:calc(100svh - 64px);display:grid;place-items:center;text-align:center;
+  position:relative;cursor:pointer;user-select:none;-webkit-tap-highlight-color:transparent
+}
+.entry-inner{transform:scale(1);transition:transform .18s ease,opacity .35s ease}
+.entry:active .entry-inner{transform:scale(.965)}
+.entry.is-pressed .entry-inner{transform:scale(.94);opacity:.84}
+.rings{width:176px;height:176px;display:grid;place-items:center;position:relative;margin:0 auto 26px}
+.ring{position:absolute;border:1.5px solid rgba(0,196,0,.42);border-radius:50%;animation:pulse 1.55s ease-out infinite}
+.r1{width:78px;height:78px}.r2{width:124px;height:124px;animation-delay:.18s}.r3{width:172px;height:172px;animation-delay:.36s}
+.center{
+  width:70px;height:70px;border-radius:50%;background:#fff;color:#111;display:grid;place-items:center;
+  font-weight:900;font-size:26px;box-shadow:0 0 0 0 rgba(0,196,0,.28);animation:centerPulse 1.55s ease-in-out infinite
+}
+.entry small{font-size:14px;color:#a4aaa4}
+.entry h1{font-size:36px;line-height:1.24;letter-spacing:-.055em;margin:13px 0 0}
+.entry h1 em{font-style:normal;color:var(--green)}
+.tap{
+  position:absolute;bottom:34px;border:1px solid #3d3d3d;background:#1d1d1d;color:#e8e8e8;
+  border-radius:999px;padding:12px 18px;font-size:13px;font-weight:750;cursor:pointer;
+  transition:.16s ease
+}
+.tap:active{transform:scale(.94);background:#272727}
+@keyframes pulse{0%{transform:scale(.7);opacity:0}35%{opacity:1}100%{transform:scale(1.08);opacity:0}}
+@keyframes centerPulse{50%{box-shadow:0 0 0 12px rgba(0,196,0,0)}}
 
-/* content exists in DOM from first paint so mobile cannot get stuck blank */
-.content{opacity:0;max-height:0;overflow:hidden;pointer-events:none;transition:opacity .5s ease}
+/* page transition */
+.content{opacity:0;max-height:0;overflow:hidden;pointer-events:none;transform:translateY(12px);transition:opacity .45s ease,transform .45s ease}
 body.open .entry{display:none}
-body.open .content{opacity:1;max-height:none;overflow:visible;pointer-events:auto}
+body.open .content{opacity:1;max-height:none;overflow:visible;pointer-events:auto;transform:none}
 
-.hero{padding:86px 0 58px;border-bottom:1px solid var(--line)}
-.grad{width:78px;height:3px;border-radius:8px;background:linear-gradient(90deg,#dfff5c,#47e9b2,#3f64ff);margin-bottom:34px}
-.eyebrow{font-size:11px;color:#777;margin-bottom:13px}.hero h2{font-size:clamp(45px,7vw,72px);line-height:1.08;letter-spacing:-.065em;margin:0}.hero h2 em{font-style:normal;color:var(--green)}
-.hero p{max-width:580px;font-size:15px;line-height:1.75;color:#929792;margin:25px 0 0}
+/* tighter hero */
+.hero{padding:44px 0 38px;border-bottom:1px solid var(--line)}
+.grad{width:86px;height:4px;border-radius:8px;background:linear-gradient(90deg,#dfff5c,#47e9b2,#3f64ff);margin-bottom:20px}
+.eyebrow{font-size:13px;font-weight:800;color:#8c928c;margin-bottom:10px;letter-spacing:.04em}
+.hero h2{font-size:clamp(42px,6vw,66px);line-height:1.06;letter-spacing:-.065em;margin:0;max-width:850px}
+.hero h2 em{font-style:normal;color:var(--green)}
 
-.answer{padding:55px 0}
-.answer-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:24px}
-.kicker{font-size:11px;font-weight:800;color:var(--green);margin-bottom:9px}.answer h3{font-size:29px;letter-spacing:-.045em;margin:0}.answer-head p{font-size:12px;color:#777;margin:0}
+/* primary */
+.answer{padding:42px 0 46px}
+.answer-head{margin-bottom:22px}
+.kicker{font-size:13px;font-weight:850;color:var(--green);margin-bottom:8px;letter-spacing:.03em}
+.answer h3,.more h3{font-size:31px;line-height:1.2;letter-spacing:-.045em;margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}
+.card{
+  min-height:238px;border:1px solid #3d3d3d;border-radius:16px;padding:20px;background:var(--panel);
+  display:flex;flex-direction:column;transition:transform .18s,border-color .18s,background .18s;overflow:hidden
+}
+.card:hover{transform:translateY(-3px);border-color:#606060}
+.card.featured{background:#f7f7f7;color:#151515;border-color:#f7f7f7}
+.card-media{
+  height:72px;border-radius:10px;background:#242424;border:1px solid #333;margin-bottom:18px;
+  display:grid;place-items:center;overflow:hidden;position:relative
+}
+.card-media img,.card-media video{width:100%;height:100%;object-fit:cover;display:block}
+.card-media.placeholder:before{content:"IMAGE / VIDEO";font-size:10px;font-weight:800;letter-spacing:.08em;color:#666}
+.featured .card-media{background:#e9ece9;border-color:#dedede}
+.featured .card-media.placeholder:before{color:#999}
+.card-top{font-size:12px;font-weight:800;color:#858b85;margin-bottom:9px}.featured .card-top{color:#737773}
+.card strong{font-size:20px;line-height:1.3;letter-spacing:-.035em}
+.card p{font-size:14px;line-height:1.5;color:#9aa09a;margin:7px 0 0}
+.featured p{color:#707570}
+.card-foot{margin-top:auto;padding-top:17px;display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:850}
+.arrow{width:32px;height:32px;border:1px solid #4b4b4b;border-radius:50%;display:grid;place-items:center;font-size:15px}.featured .arrow{border-color:#d2d2d2}
 
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.card{min-height:270px;border:1px solid var(--line);border-radius:16px;padding:22px;background:var(--panel);display:flex;flex-direction:column;transition:.18s}
-.card:hover{transform:translateY(-3px);border-color:#484848}.card.featured{background:#f7f7f7;color:#151515;border-color:#f7f7f7}
-.card-top{font-size:10px;color:#6f746f}.featured .card-top{color:#777}
-.icon{width:38px;height:38px;border-radius:10px;background:#252525;color:var(--green);display:grid;place-items:center;margin:28px 0 22px;font-size:15px;font-weight:900}
-.featured .icon{background:#e8f7e8;color:#009a00}.card strong{font-size:18px;line-height:1.35;letter-spacing:-.035em}.card p{font-size:12px;line-height:1.6;color:#8d928d;margin:8px 0 0}.featured p{color:#737773}
-.card-foot{margin-top:auto;padding-top:22px;display:flex;align-items:center;justify-content:space-between;font-size:11px;font-weight:800}.arrow{width:31px;height:31px;border:1px solid #3b3b3b;border-radius:50%;display:grid;place-items:center}.featured .arrow{border-color:#ddd}
+/* secondary */
+.more{padding:40px 0 44px;border-top:1px solid #454545}
+.more-head{margin-bottom:18px}
+.more-grid{display:grid;grid-template-columns:1.42fr .58fr;gap:13px}
+.list,.tip{border:1px solid #414141;border-radius:16px;background:#191919}
+.list{padding:2px 22px}
+.row{
+  display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:center;
+  padding:16px 0;border-bottom:1px solid #414141
+}
+.row:last-child{border-bottom:0}
+.row .n{font-size:12px;font-weight:800;color:#777}
+.row strong{font-size:16px;display:block;letter-spacing:-.02em}
+.row span.desc{font-size:13px;color:#8f958f;margin-top:3px;display:block}
+.row .go{font-size:18px;color:#aaa}
+.tip{
+  padding:22px;background:linear-gradient(145deg,rgba(0,196,0,.18),rgba(63,100,255,.12) 72%),#1a1f1a;
+  border-color:rgba(0,196,0,.38);display:flex;flex-direction:column;justify-content:space-between
+}
+.tip small{font-size:12px;color:#68e768;font-weight:900}
+.tip h4{font-size:23px;line-height:1.3;letter-spacing:-.04em;margin:14px 0 8px}
+.tip p{font-size:14px;color:#b0b7b0;line-height:1.55;margin:0}
+.tip-foot{border-top:1px solid rgba(255,255,255,.13);margin-top:24px;padding-top:13px;font-size:12px;color:#8f968f}
 
-.more{padding:52px 0;border-top:1px solid var(--line)}
-.more h3{font-size:27px;letter-spacing:-.04em;margin:0 0 24px}
-.more-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:12px}
-.list,.tip{border:1px solid var(--line);border-radius:16px;background:#181818;padding:18px 24px}
-.row{display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;padding:18px 0;border-bottom:1px solid #2d2d2d}.row:last-child{border-bottom:0}
-.row .n{font-size:10px;color:#666}.row strong{font-size:14px;display:block}.row span{font-size:11px;color:#7d827d;margin-top:4px;display:block}.row .go{color:#777}
-.tip{background:#1c1f1c;display:flex;flex-direction:column;justify-content:space-between}.tip small{font-size:10px;color:var(--green);font-weight:800}.tip h4{font-size:24px;line-height:1.3;letter-spacing:-.04em;margin:18px 0 10px}.tip p{font-size:12px;color:#8a8f8a;line-height:1.65;margin:0}.tip-foot{border-top:1px solid #303430;margin-top:35px;padding-top:15px;font-size:10px;color:#666}
-
-.other{padding:44px 0 0;border-top:1px solid var(--line)}.other small{font-size:10px;color:#666}.chips{display:flex;gap:8px;overflow:auto;margin-top:13px;scrollbar-width:none}.chip{flex:none;border:1px solid #303030;border-radius:999px;padding:10px 13px;font-size:11px;color:#999}
-footer{padding-top:52px;display:flex;justify-content:space-between;color:#4f4f4f;font-size:10px}
+/* other concerns: stronger */
+.other{padding:38px 0 0;border-top:1px solid #454545}
+.other-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:15px}
+.other .kicker{margin:0}
+.other h3{font-size:24px;letter-spacing:-.035em;margin:4px 0 0}
+.chips{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.chip{
+  border:1px solid #444;border-radius:12px;padding:15px 16px;font-size:14px;font-weight:700;color:#d5d8d5;
+  background:#1a1a1a;display:flex;align-items:center;justify-content:space-between
+}
+.chip:after{content:"→";color:#7c827c}
+footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969;font-size:11px}
 
 @media(max-width:720px){
- .app{padding:0 20px 60px}.top{height:58px}.entry{min-height:calc(100svh - 58px)}
- .entry h1{font-size:30px}.hero{padding:60px 0 42px}.hero h2{font-size:46px}
- .answer{padding:42px 0}.answer-head{display:block}.answer-head p{margin-top:8px}
- .cards{grid-template-columns:1fr}.card{min-height:205px;padding:20px}.icon{margin:20px 0 17px}
- .more{padding:42px 0}.more-grid{grid-template-columns:1fr}.list,.tip{padding:18px}
- .tip{min-height:230px}.row{padding:16px 0}
+ .app{padding:0 20px 52px}.top{height:56px}.top small{font-size:9px}
+ .entry{min-height:calc(100svh - 56px)}.rings{width:160px;height:160px}.r3{width:156px;height:156px}
+ .entry h1{font-size:33px}.entry small{font-size:13px}
+ .hero{padding:30px 0 30px}.grad{margin-bottom:16px}.hero h2{font-size:43px;line-height:1.07}
+ .answer{padding:34px 0 38px}.answer h3,.more h3{font-size:27px}
+ .cards{grid-template-columns:1fr}.card{min-height:0;padding:18px}.card-media{height:82px;margin-bottom:15px}
+ .card strong{font-size:21px}.card p{font-size:14px}.card-foot{padding-top:15px}
+ .more{padding:34px 0 38px}.more-grid{grid-template-columns:1fr}.list{padding:0 18px}.row{padding:15px 0}
+ .row strong{font-size:16px}.row span.desc{font-size:13px}
+ .tip{min-height:0;padding:20px}.tip h4{font-size:24px}
+ .other{padding-top:34px}.chips{grid-template-columns:1fr}.chip{font-size:15px;padding:15px}
+ footer{padding-top:38px}
 }
 </style>
 </head>
 <body>
 <div class="app">
-<header class="top"><div class="logo"><b>G</b>market · Seller Guide</div><small>SELLER COMMUNICATION</small></header>
+<header class="top">
+  <div class="logo"><b>G</b>market · Seller Guide</div>
+  <small>SELLER COMMUNICATION</small>
+</header>
 
-<section class="entry" id="entry">
+<section class="entry" id="entry" role="button" tabindex="0" aria-label="판매 소식 가이드 열기">
  <div class="entry-inner">
   <div class="rings"><i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i><div class="center">↗</div></div>
-  <small>QR에서 선택한 고민을 연결하고 있어요</small>
+  <small>QR에서 선택한 고민이 도착했어요</small>
   <h1>놓치기 쉬운<br><em>판매 소식,</em> 챙겨보고 계신가요?</h1>
-  <p>선택한 고민에 맞는 정보를 불러올게요.</p>
  </div>
- <button class="skip" id="skip">바로 보기 ↓</button>
+ <button class="tap" id="tap">눌러서 답변 확인하기 &nbsp;→</button>
 </section>
 
 <main class="content" id="content">
  <section class="hero">
-  <div class="grad"></div><div class="eyebrow">YOUR QUESTION</div>
-  <h2>놓치기 쉬운<br><em>판매 소식,</em><br>챙겨보고 계신가요?</h2>
-  <p>프로모션부터 새로운 판매 기회까지. 자주 찾아보지 않아도 필요한 소식을 놓치지 않도록, 지금 확인하면 좋은 채널과 콘텐츠를 모았어요.</p>
+  <div class="grad"></div>
+  <div class="eyebrow">YOUR QUESTION</div>
+  <h2>놓치기 쉬운 <em>판매 소식,</em><br>챙겨보고 계신가요?</h2>
  </section>
 
  <section class="answer">
   <div class="answer-head">
-   <div><div class="kicker">START HERE</div><h3>이 3가지를 먼저 확인해보세요</h3></div>
-   <p>판매 소식을 빠르게 확인하는 순서로 정리했어요.</p>
+   <div class="kicker">START HERE</div>
+   <h3>이 3가지를 먼저 확인해보세요</h3>
   </div>
+
   <div class="cards">
    <a class="card featured" href="#">
-    <div class="card-top">01 · NEWS</div><div class="icon">N</div>
+    <div class="card-media placeholder"><!-- 이미지 사용 시: <img src="이미지주소" alt=""> / 영상 사용 시 video 태그 --></div>
+    <div class="card-top">01 · NEWS</div>
     <strong>판매자 뉴스레터<br>한 번에 확인하기</strong>
-    <p>프로모션, 정책, 주요 판매 소식을 정기적으로 모아 확인해보세요.</p>
+    <p>프로모션과 주요 판매 소식을 한 번에 확인해보세요.</p>
     <div class="card-foot"><span>뉴스레터 보기</span><span class="arrow">→</span></div>
    </a>
+
    <a class="card" href="#">
-    <div class="card-top">02 · UPDATE</div><div class="icon">↗</div>
+    <div class="card-media placeholder"></div>
+    <div class="card-top">02 · UPDATE</div>
     <strong>지금 진행 중인<br>판매 기회 확인하기</strong>
-    <p>기획전과 이벤트, 셀러 지원 혜택 등 지금 참여할 수 있는 소식을 확인해보세요.</p>
+    <p>기획전·이벤트·지원 혜택을 바로 확인해보세요.</p>
     <div class="card-foot"><span>파트너센터 새소식</span><span class="arrow">→</span></div>
    </a>
+
    <a class="card" href="#">
-    <div class="card-top">03 · ALERT</div><div class="icon">●</div>
+    <div class="card-media placeholder"></div>
+    <div class="card-top">03 · ALERT</div>
     <strong>중요한 소식은<br>메시지로 받아보기</strong>
-    <p>매번 찾아오지 않아도 꼭 필요한 안내를 카카오채널에서 빠르게 받아보세요.</p>
+    <p>꼭 필요한 안내를 카카오채널에서 빠르게 받아보세요.</p>
     <div class="card-foot"><span>카카오채널 추가</span><span class="arrow">→</span></div>
    </a>
   </div>
  </section>
 
  <section class="more">
-  <div class="kicker">GO FURTHER</div><h3>조금 더 살펴볼 수 있어요</h3>
+  <div class="more-head">
+   <div class="kicker">GO FURTHER</div>
+   <h3>조금 더 살펴볼 수 있어요</h3>
+  </div>
   <div class="more-grid">
    <div class="list">
-    <a class="row" href="#"><span class="n">01</span><div><strong>판매 인사이트 보기</strong><span>시장과 카테고리 흐름을 한눈에 확인</span></div><span class="go">→</span></a>
-    <a class="row" href="#"><span class="n">02</span><div><strong>셀러 스토리에서 사례 찾기</strong><span>다른 셀러의 운영 방식과 성장 사례</span></div><span class="go">→</span></a>
-    <a class="row" href="#"><span class="n">03</span><div><strong>온라인 교육 확인하기</strong><span>필요한 주제를 골라 무료로 학습</span></div><span class="go">→</span></a>
+    <a class="row" href="#"><span class="n">01</span><div><strong>판매 인사이트 보기</strong><span class="desc">시장과 카테고리 흐름 확인</span></div><span class="go">→</span></a>
+    <a class="row" href="#"><span class="n">02</span><div><strong>셀러 스토리 보기</strong><span class="desc">다른 셀러의 운영·성장 사례</span></div><span class="go">→</span></a>
+    <a class="row" href="#"><span class="n">03</span><div><strong>온라인 교육 확인하기</strong><span class="desc">필요한 주제만 골라 학습</span></div><span class="go">→</span></a>
    </div>
    <aside class="tip">
-    <div><small>SELLER TIP</small><h4>찾는 소식보다<br>받는 소식을 늘려보세요.</h4><p>뉴스레터와 카카오채널을 연결해두면 새로운 판매 기회를 더 빠르게 확인할 수 있어요.</p></div>
+    <div>
+      <small>SELLER TIP</small>
+      <h4>찾는 소식보다<br>받는 소식을 늘려보세요.</h4>
+      <p>뉴스레터와 카카오채널을 연결해두면 새로운 판매 기회를 더 빠르게 확인할 수 있어요.</p>
+    </div>
     <div class="tip-foot">파트너센터 · 교육센터 · 카카오채널</div>
    </aside>
   </div>
  </section>
 
- <section class="other"><small>다른 고민도 확인하기</small><div class="chips"><span class="chip">매출을 더 올리고 싶어요</span><span class="chip">판매 방법이 어려워요</span><span class="chip">셀러 트렌드가 궁금해요</span><span class="chip">새로운 판매 기회를 찾고 있어요</span></div></section>
+ <section class="other">
+   <div class="other-head">
+    <div><div class="kicker">ANOTHER QUESTION</div><h3>다른 고민도 확인해보세요</h3></div>
+   </div>
+   <div class="chips">
+    <a class="chip" href="#">매출을 더 올리고 싶어요</a>
+    <a class="chip" href="#">판매 방법이 아직 어려워요</a>
+    <a class="chip" href="#">요즘 셀러 트렌드가 궁금해요</a>
+    <a class="chip" href="#">새로운 판매 기회를 찾고 있어요</a>
+   </div>
+ </section>
+
  <footer><span>Gmarket Seller Communication</span><span>Seller Guide</span></footer>
 </main>
 </div>
 
 <script>
 (function(){
- var opened=false;
- function openGuide(){
-   if(opened) return;
-   opened=true;
-   document.body.classList.add('open');
-   window.scrollTo(0,0);
- }
- document.getElementById('skip').addEventListener('click',openGuide);
- document.getElementById('entry').addEventListener('click',function(e){
-   if(e.target.id!=='skip') openGuide();
- });
- window.setTimeout(openGuide,2200);
- /* fallback for mobile/webview timers */
- window.addEventListener('pageshow',function(){window.setTimeout(openGuide,2400)});
+  var opened=false, entry=document.getElementById('entry'), tap=document.getElementById('tap');
+
+  function openGuide(){
+    if(opened) return;
+    opened=true;
+    entry.classList.add('is-pressed');
+    if(navigator.vibrate) navigator.vibrate(18);
+    window.setTimeout(function(){
+      document.body.classList.add('open');
+      window.scrollTo(0,0);
+    },180);
+  }
+
+  tap.addEventListener('click',function(e){e.stopPropagation();openGuide();});
+  entry.addEventListener('click',openGuide);
+  entry.addEventListener('keydown',function(e){
+    if(e.key==='Enter'||e.key===' '){e.preventDefault();openGuide();}
+  });
 })();
 </script>
 </body>
