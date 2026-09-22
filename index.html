@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 <html lang="ko">
 <head>
@@ -10,12 +9,9 @@
 :root{
   --bg:#141414;
   --panel:#1b1b1b;
-  --panel2:#202020;
-  --line:#3a3a3a;
   --text:#fff;
   --muted:#a6aba6;
   --green:#00C400;
-  --green-dark:#009A00;
   --blue:#3F64FF;
 }
 
@@ -53,17 +49,11 @@ button{
 ================================================== */
 
 .top{
-  height:64px;
+  height:68px;
   display:flex;
   align-items:center;
   justify-content:space-between;
   border-bottom:1px solid #292929;
-}
-
-.brand-wrap{
-  display:flex;
-  align-items:center;
-  gap:14px;
 }
 
 .brand-logo{
@@ -82,33 +72,16 @@ button{
   object-position:left center;
 }
 
+/* V14 — 우측 날짜 */
 .event-date{
-  position:relative;
-  padding-left:14px;
+  margin-left:auto;
 
-  font-size:11px;
+  font-size:16px;
   line-height:1;
   font-weight:800;
-  letter-spacing:.07em;
+  letter-spacing:.025em;
 
-  color:#9A9F9A;
-}
-
-.event-date:before{
-  content:"";
-  position:absolute;
-  left:0;
-  top:50%;
-  transform:translateY(-50%);
-  width:1px;
-  height:13px;
-  background:#444;
-}
-
-.top-note{
-  font-size:11px;
-  color:#777D77;
-  letter-spacing:.04em;
+  color:#D8DCD8;
 }
 
 
@@ -117,7 +90,7 @@ button{
 ================================================== */
 
 .entry{
-  min-height:calc(100svh - 64px);
+  min-height:calc(100svh - 68px);
 
   display:flex;
   align-items:center;
@@ -138,10 +111,7 @@ button{
 .entry-inner{
   width:100%;
   transform:scale(1);
-
-  transition:
-    transform .18s ease,
-    opacity .35s ease;
+  transition:transform .18s ease,opacity .35s ease;
 }
 
 .entry:active .entry-inner{
@@ -166,10 +136,8 @@ button{
 
 .ring{
   position:absolute;
-
   border:1.5px solid rgba(0,196,0,.42);
   border-radius:50%;
-
   animation:pulse 1.55s ease-out infinite;
 }
 
@@ -206,7 +174,6 @@ button{
   font-size:26px;
 
   box-shadow:0 0 0 0 rgba(0,196,0,.28);
-
   animation:centerPulse 1.55s ease-in-out infinite;
 }
 
@@ -219,7 +186,6 @@ button{
   font-size:36px;
   line-height:1.24;
   letter-spacing:-.055em;
-
   margin:13px 0 0;
 }
 
@@ -229,7 +195,9 @@ button{
 }
 
 
-/* tap */
+/* ==================================================
+   TAP BUTTON
+================================================== */
 
 .tap{
   position:relative;
@@ -250,8 +218,7 @@ button{
   border:1px solid rgba(0,196,0,.58);
   border-radius:999px;
 
-  background:
-    linear-gradient(180deg,#242824,#1b1e1b);
+  background:linear-gradient(180deg,#242824,#1b1e1b);
 
   color:#fff;
 
@@ -266,10 +233,7 @@ button{
 
   cursor:pointer;
 
-  transition:
-    transform .13s ease,
-    background .13s ease,
-    box-shadow .13s ease;
+  transition:transform .13s ease,background .13s ease;
 }
 
 .tap-dot{
@@ -289,8 +253,6 @@ button{
   font-size:17px;
   font-weight:950;
 
-  box-shadow:0 0 0 0 rgba(0,196,0,.28);
-
   animation:tapHint 1.8s ease-out infinite;
 }
 
@@ -309,22 +271,10 @@ button{
 }
 
 
-/* animations */
-
 @keyframes pulse{
-  0%{
-    transform:scale(.7);
-    opacity:0;
-  }
-
-  35%{
-    opacity:1;
-  }
-
-  100%{
-    transform:scale(1.08);
-    opacity:0;
-  }
+  0%{transform:scale(.7);opacity:0}
+  35%{opacity:1}
+  100%{transform:scale(1.08);opacity:0}
 }
 
 @keyframes centerPulse{
@@ -337,7 +287,6 @@ button{
   0%{
     box-shadow:0 0 0 0 rgba(0,196,0,.28);
   }
-
   70%,100%{
     box-shadow:0 0 0 10px rgba(0,196,0,0);
   }
@@ -345,7 +294,7 @@ button{
 
 
 /* ==================================================
-   PAGE TRANSITION
+   TRANSITION
 ================================================== */
 
 .content{
@@ -356,9 +305,7 @@ button{
 
   transform:translateY(12px);
 
-  transition:
-    opacity .45s ease,
-    transform .45s ease;
+  transition:opacity .45s ease,transform .45s ease;
 }
 
 body.open .entry{
@@ -370,7 +317,6 @@ body.open .content{
   max-height:none;
   overflow:visible;
   pointer-events:auto;
-
   transform:none;
 }
 
@@ -381,7 +327,6 @@ body.open .content{
 
 .hero{
   padding:36px 0 32px;
-
   border-bottom:1px solid #343434;
 }
 
@@ -391,20 +336,18 @@ body.open .content{
 
   border-radius:8px;
 
-  background:
-    linear-gradient(
-      90deg,
-      #DFFF5C,
-      #47E9B2,
-      #3F64FF
-    );
+  background:linear-gradient(
+    90deg,
+    #DFFF5C,
+    #47E9B2,
+    #3F64FF
+  );
 
   margin-bottom:18px;
 }
 
 .hero h2{
   margin:0;
-
   max-width:920px;
 
   font-size:clamp(36px,5.3vw,58px);
@@ -412,7 +355,7 @@ body.open .content{
   letter-spacing:-.065em;
 }
 
-.hero h2 > span{
+.hero h2>span{
   display:block;
   white-space:nowrap;
 }
@@ -445,7 +388,7 @@ body.open .content{
 
 
 /* ==================================================
-   V13 PRIMARY CARDS
+   PRIMARY CARDS
 ================================================== */
 
 .cards{
@@ -454,15 +397,11 @@ body.open .content{
   gap:11px;
 }
 
-
-/* shared */
-
 .card{
   position:relative;
 
   width:100%;
   min-width:0;
-
   min-height:126px;
 
   display:grid;
@@ -474,17 +413,10 @@ body.open .content{
   padding:21px 22px 21px 27px;
 
   border-radius:16px;
-
   overflow:hidden;
 
-  transition:
-    transform .18s ease,
-    background .18s ease,
-    box-shadow .18s ease;
+  transition:transform .18s ease,background .18s ease;
 }
-
-
-/* left accent */
 
 .card:before{
   content:"";
@@ -502,9 +434,6 @@ body.open .content{
   background:var(--green);
 }
 
-
-/* CARD 01 */
-
 .card:nth-child(1){
   background:
     linear-gradient(
@@ -518,9 +447,6 @@ body.open .content{
   box-shadow:
     inset 0 0 0 1px rgba(0,196,0,.17);
 }
-
-
-/* CARD 02 */
 
 .card:nth-child(2){
   background:
@@ -540,9 +466,6 @@ body.open .content{
   background:#6683FF;
 }
 
-
-/* CARD 03 */
-
 .card:nth-child(3){
   background:
     linear-gradient(
@@ -560,15 +483,9 @@ body.open .content{
   background:#D8DDD8;
 }
 
-
 .card:hover{
   transform:translateY(-3px);
-
-  background-color:#202220;
 }
-
-
-/* COPY */
 
 .card-copy{
   min-width:0;
@@ -577,34 +494,22 @@ body.open .content{
   flex-direction:column;
 
   align-items:flex-start;
-
   text-align:left;
 }
 
-
-/* title */
-
 .card strong{
   display:block;
-
   width:100%;
-
-  margin:0;
 
   font-size:clamp(22px,2.5vw,27px);
   line-height:1.2;
-
   letter-spacing:-.045em;
 
   color:#fff;
 }
 
-
-/* subtitle */
-
 .card .mini{
   display:block;
-
   width:100%;
 
   margin-top:8px;
@@ -616,9 +521,6 @@ body.open .content{
 
   font-weight:550;
 }
-
-
-/* symbols */
 
 .card-symbol{
   width:62px;
@@ -632,7 +534,6 @@ body.open .content{
   border-radius:50%;
 
   font-size:28px;
-  line-height:1;
 
   background:rgba(255,255,255,.055);
 
@@ -650,12 +551,11 @@ body.open .content{
 
 
 /* ==================================================
-   CHANNELS
+   V14 CHANNELS
 ================================================== */
 
 .more{
   padding:34px 0 38px;
-
   border-top:1px solid #343434;
 }
 
@@ -668,12 +568,8 @@ body.open .content{
 
   font-size:21px;
   line-height:1.25;
-
   letter-spacing:-.035em;
 }
-
-
-/* channel cards */
 
 .channel-cards{
   display:grid;
@@ -684,23 +580,24 @@ body.open .content{
   gap:10px;
 }
 
-.channel-card{
-  position:relative;
 
+/*
+  로고 + 이름만.
+  subtitle / arrow 없음.
+*/
+
+.channel-card{
   min-width:0;
-  min-height:112px;
+  min-height:104px;
+
+  padding:18px 17px;
 
   display:flex;
-  flex-direction:column;
+  align-items:center;
 
-  align-items:flex-start;
-  justify-content:space-between;
+  gap:15px;
 
-  gap:13px;
-
-  padding:16px;
-
-  border-radius:15px;
+  border-radius:16px;
 
   background:#1A1A1A;
 
@@ -709,38 +606,29 @@ body.open .content{
 
   transition:
     transform .17s ease,
-    background .17s ease;
+    background .17s ease,
+    box-shadow .17s ease;
 }
 
 .channel-card:hover{
   transform:translateY(-3px);
 
   background:#202020;
-}
 
-
-/* channel top */
-
-.channel-top{
-  width:100%;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  gap:10px;
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.17);
 }
 
 
 /* icons */
 
 .channel-icon{
-  width:48px;
-  height:48px;
+  width:54px;
+  height:54px;
 
-  flex:0 0 48px;
+  flex:0 0 54px;
 
-  border-radius:13px;
+  border-radius:15px;
 
   display:grid;
   place-items:center;
@@ -760,8 +648,8 @@ body.open .content{
 }
 
 .channel-icon.kakao svg{
-  width:38px;
-  height:38px;
+  width:42px;
+  height:42px;
 }
 
 
@@ -772,20 +660,18 @@ body.open .content{
 }
 
 .channel-icon.edu svg{
-  width:40px;
-  height:40px;
+  width:44px;
+  height:44px;
 }
 
 
-/* partner center */
+/* partner */
 
 .channel-icon.partner{
-  position:relative;
-
   background:#3F64FF;
 
   box-shadow:
-    0 5px 18px rgba(63,100,255,.18);
+    0 5px 18px rgba(63,100,255,.20);
 }
 
 .partner-g{
@@ -795,74 +681,39 @@ body.open .content{
   width:100%;
   height:100%;
 
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size:29px;
-  line-height:1;
-
-  font-weight:900;
-
   color:#fff;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  font-size:32px;
+  line-height:1;
+  font-weight:900;
 }
 
 
-/* arrow */
+/* channel title */
 
-.channel-arrow{
-  width:27px;
-  height:27px;
-
-  display:grid;
-  place-items:center;
-
-  border-radius:50%;
-
-  background:#252525;
-
-  color:#A8ADA8;
-
-  font-size:13px;
-}
-
-
-/* channel copy */
-
-.channel-copy{
-  width:100%;
+.channel-name{
   min-width:0;
-}
 
-.channel-card strong{
   display:block;
 
-  font-size:14px;
-  line-height:1.3;
+  font-size:17px;
+  line-height:1.28;
 
-  letter-spacing:-.025em;
-}
+  font-weight:800;
+  letter-spacing:-.035em;
 
-.channel-card span.desc{
-  display:block;
-
-  margin-top:4px;
-
-  color:#8E948E;
-
-  font-size:10px;
-  line-height:1.35;
+  color:#F5F6F5;
 }
 
 
 /* ==================================================
-   OTHER CONCERNS
+   V14 OTHER CONCERNS
 ================================================== */
 
 .other{
   padding:32px 0 4px;
-
   border-top:1px solid #343434;
 }
 
@@ -875,12 +726,8 @@ body.open .content{
 
   font-size:19px;
   line-height:1.25;
-
   letter-spacing:-.035em;
 }
-
-
-/* topics */
 
 .topic-switcher{
   display:grid;
@@ -891,29 +738,32 @@ body.open .content{
   gap:8px;
 }
 
+
+/*
+  화살표가 텍스트 영역을 먹지 않도록
+  카드 아래쪽으로 이동
+*/
+
 .topic{
+  position:relative;
+
   min-width:0;
-  min-height:72px;
+  min-height:94px;
 
-  padding:12px 13px;
+  padding:
+    15px 38px 27px 15px;
 
-  border-radius:13px;
+  border-radius:14px;
 
   background:#191919;
 
   box-shadow:
     inset 0 0 0 1px rgba(255,255,255,.09);
 
-  display:grid;
+  display:flex;
+  align-items:flex-start;
 
-  grid-template-columns:
-    minmax(0,1fr) 24px;
-
-  align-items:center;
-
-  gap:7px;
-
-  color:#CACDCA;
+  color:#D5D8D5;
 
   transition:
     background .16s ease,
@@ -931,55 +781,56 @@ body.open .content{
 }
 
 
-/* label */
+/* topic copy */
 
 .topic-label{
   min-width:0;
+  width:100%;
 
   display:flex;
   flex-direction:column;
 
-  justify-content:center;
-
   gap:2px;
 
-  font-size:12px;
+  font-size:14px;
   line-height:1.3;
 
-  font-weight:750;
+  font-weight:780;
 
-  letter-spacing:-.025em;
+  letter-spacing:-.035em;
 }
 
 .topic-label i{
   display:block;
 
-  min-width:0;
+  width:100%;
 
   font-style:normal;
 
   white-space:normal;
-
   overflow:visible;
-
-  text-overflow:clip;
 }
 
 
-/* arrows */
+/* arrow at bottom */
 
 .topic-arrow{
-  width:24px;
-  height:24px;
+  position:absolute;
+
+  right:13px;
+  bottom:11px;
+
+  width:25px;
+  height:25px;
 
   display:grid;
   place-items:center;
 
   border-radius:50%;
 
-  background:#242424;
+  background:#262626;
 
-  color:#898F89;
+  color:#9BA09B;
 
   font-size:11px;
 }
@@ -988,7 +839,7 @@ body.open .content{
 /* active */
 
 .topic.active{
-  grid-template-columns:25px minmax(0,1fr);
+  padding-left:15px;
 
   background:
     linear-gradient(
@@ -1006,7 +857,14 @@ body.open .content{
   pointer-events:none;
 }
 
-.topic-check{
+.topic.active:after{
+  content:"✓";
+
+  position:absolute;
+
+  right:13px;
+  bottom:11px;
+
   width:25px;
   height:25px;
 
@@ -1018,24 +876,8 @@ body.open .content{
   background:var(--green);
   color:#071107;
 
-  font-size:12px;
-  font-weight:950;
-}
-
-
-/* ==================================================
-   FOOTER
-================================================== */
-
-footer{
-  padding-top:44px;
-
-  display:flex;
-  justify-content:space-between;
-
-  color:#696969;
-
   font-size:11px;
+  font-weight:950;
 }
 
 
@@ -1046,56 +888,37 @@ footer{
 @media(max-width:720px){
 
   .app{
-    padding:
-      0 18px 52px;
+    padding:0 18px 52px;
   }
 
 
   /* header */
 
   .top{
-    height:56px;
-  }
-
-  .brand-wrap{
-    gap:10px;
+    height:58px;
   }
 
   .brand-logo{
-    width:92px;
-    height:31px;
+    width:94px;
+    height:32px;
   }
 
   .event-date{
-    padding-left:10px;
-
-    font-size:9px;
-    letter-spacing:.045em;
-  }
-
-  .event-date:before{
-    height:11px;
-  }
-
-  .top-note{
-    display:none;
+    font-size:14px;
+    letter-spacing:.015em;
   }
 
 
   /* entry */
 
   .entry{
-    min-height:
-      calc(100svh - 56px);
-
-    padding:
-      34px 0 30px;
+    min-height:calc(100svh - 58px);
+    padding:34px 0 30px;
   }
 
   .rings{
     width:160px;
     height:160px;
-
     margin-bottom:18px;
   }
 
@@ -1106,7 +929,6 @@ footer{
 
   .entry h1{
     margin-top:10px;
-
     font-size:33px;
   }
 
@@ -1116,17 +938,14 @@ footer{
 
   .tap{
     margin-top:26px;
-
     min-width:224px;
     min-height:52px;
-
     font-size:13px;
   }
 
   .tap-dot{
     width:36px;
     height:36px;
-
     flex-basis:36px;
   }
 
@@ -1134,42 +953,23 @@ footer{
   /* hero */
 
   .hero{
-    padding:28px 0 28px;
-  }
-
-  .grad{
-    margin-bottom:16px;
+    padding:28px 0;
   }
 
   .hero h2{
-    font-size:clamp(
-      30px,
-      8.3vw,
-      40px
-    );
-
+    font-size:clamp(30px,8.3vw,40px);
     line-height:1.1;
-
-    letter-spacing:-.06em;
   }
 
 
-  /* answers */
+  /* answer */
 
   .answer{
     padding:30px 0 35px;
   }
 
-  .answer-head{
-    margin-bottom:15px;
-  }
-
   .answer h3{
-    font-size:clamp(
-      22px,
-      5.7vw,
-      27px
-    );
+    font-size:clamp(22px,5.7vw,27px);
   }
 
   .cards{
@@ -1193,26 +993,17 @@ footer{
   .card:before{
     top:15px;
     bottom:15px;
-
     width:3px;
   }
 
   .card strong{
-    font-size:clamp(
-      20px,
-      5vw,
-      23px
-    );
+    font-size:clamp(20px,5vw,23px);
   }
 
   .card .mini{
     margin-top:6px;
 
-    font-size:clamp(
-      12px,
-      3vw,
-      14px
-    );
+    font-size:clamp(12px,3vw,14px);
   }
 
   .card-symbol{
@@ -1223,7 +1014,9 @@ footer{
   }
 
 
-  /* channels */
+  /* =========================
+     MOBILE CHANNELS
+  ========================= */
 
   .more{
     padding:30px 0 34px;
@@ -1241,58 +1034,57 @@ footer{
   }
 
   .channel-card{
-    min-height:120px;
+    min-height:118px;
 
-    padding:10px 8px;
+    padding:13px 7px;
+
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
 
     gap:9px;
+
+    text-align:center;
 
     border-radius:12px;
   }
 
   .channel-icon{
-    width:40px;
-    height:40px;
+    width:44px;
+    height:44px;
 
-    flex-basis:40px;
+    flex:0 0 44px;
 
-    border-radius:10px;
+    border-radius:11px;
   }
 
   .channel-icon.kakao svg{
-    width:32px;
-    height:32px;
-  }
-
-  .channel-icon.edu svg{
     width:35px;
     height:35px;
   }
 
+  .channel-icon.edu svg{
+    width:38px;
+    height:38px;
+  }
+
   .partner-g{
-    font-size:25px;
+    font-size:27px;
   }
 
-  .channel-arrow{
-    width:22px;
-    height:22px;
+  .channel-name{
+    width:100%;
 
-    font-size:10px;
-  }
+    font-size:12px;
+    line-height:1.28;
 
-  .channel-card strong{
-    font-size:10.5px;
-    line-height:1.27;
-  }
-
-  .channel-card span.desc{
-    margin-top:3px;
-
-    font-size:8px;
+    text-align:center;
   }
 
 
-  /* other */
+  /* =========================
+     MOBILE OTHER
+  ========================= */
 
   .other{
     padding-top:29px;
@@ -1310,42 +1102,34 @@ footer{
   }
 
   .topic{
-    min-height:70px;
+    min-height:91px;
 
-    padding:10px 8px;
-
-    grid-template-columns:
-      minmax(0,1fr) 20px;
-
-    gap:4px;
+    padding:
+      12px 9px 29px;
 
     border-radius:11px;
   }
 
   .topic-label{
-    font-size:10px;
-    line-height:1.28;
+    font-size:11.5px;
+    line-height:1.3;
 
-    letter-spacing:-.04em;
+    letter-spacing:-.045em;
   }
 
-  .topic-arrow{
-    width:20px;
-    height:20px;
+  .topic-arrow,
+  .topic.active:after{
+    right:9px;
+    bottom:8px;
+
+    width:21px;
+    height:21px;
 
     font-size:9px;
   }
 
   .topic.active{
-    grid-template-columns:
-      20px minmax(0,1fr);
-  }
-
-  .topic-check{
-    width:20px;
-    height:20px;
-
-    font-size:9px;
+    padding-left:9px;
   }
 }
 
@@ -1362,69 +1146,52 @@ footer{
   }
 
   .brand-logo{
-    width:88px;
+    width:90px;
   }
 
   .event-date{
-    font-size:8.5px;
+    font-size:13px;
   }
 
 
-  /* channels */
+  /* channel */
 
   .channel-card{
-    min-height:116px;
+    min-height:113px;
 
     padding:
-      9px 6px;
+      11px 5px;
   }
 
   .channel-icon{
-    width:37px;
-    height:37px;
+    width:41px;
+    height:41px;
 
-    flex-basis:37px;
+    flex-basis:41px;
   }
 
-  .channel-card strong{
-    font-size:9.5px;
-  }
-
-  .channel-card span.desc{
-    font-size:7.5px;
+  .channel-name{
+    font-size:10.5px;
+    line-height:1.27;
   }
 
 
   /* topics */
 
   .topic{
-    padding:
-      9px 6px;
+    min-height:88px;
 
-    grid-template-columns:
-      minmax(0,1fr) 18px;
+    padding:
+      11px 7px 28px;
   }
 
   .topic-label{
-    font-size:9px;
-    line-height:1.25;
-  }
-
-  .topic-arrow{
-    width:18px;
-    height:18px;
+    font-size:10.5px;
+    line-height:1.28;
   }
 
   .topic.active{
-    grid-template-columns:
-      18px minmax(0,1fr);
-  }
-
-  .topic-check{
-    width:18px;
-    height:18px;
-
-    font-size:8px;
+    padding-left:7px;
   }
 }
 
@@ -1441,7 +1208,7 @@ footer{
   }
 
   .event-date{
-    font-size:8px;
+    font-size:12px;
   }
 
   .card{
@@ -1459,30 +1226,21 @@ footer{
     font-size:22px;
   }
 
-  .channel-card span.desc{
-    display:none;
+  .channel-name{
+    font-size:9.5px;
   }
 
   .topic{
-    padding:
-      8px 5px;
-
-    grid-template-columns:1fr;
-  }
-
-  .topic-arrow,
-  .topic-check{
-    display:none;
+    padding-left:5px;
+    padding-right:5px;
   }
 
   .topic.active{
-    grid-template-columns:1fr;
+    padding-left:5px;
   }
 
   .topic-label{
-    text-align:center;
-
-    font-size:8.5px;
+    font-size:9.5px;
   }
 }
 
@@ -1495,38 +1253,30 @@ footer{
 <div class="app">
 
 
-<!-- ================= HEADER ================= -->
+<!-- HEADER -->
 
 <header class="top">
 
-  <div class="brand-wrap">
-
-    <a
-      class="brand-logo"
-      href="#"
-      aria-label="NEXT STAGE"
+  <a
+    class="brand-logo"
+    href="#"
+    aria-label="NEXT STAGE"
+  >
+    <img
+      src="https://cdn.imweb.me/upload/S20231123121fb6d98a452/c93187d4aba1a.png"
+      alt="NEXT STAGE"
     >
-      <img
-        src="https://cdn.imweb.me/upload/S20231123121fb6d98a452/c93187d4aba1a.png"
-        alt="NEXT STAGE"
-      >
-    </a>
+  </a>
 
-    <span class="event-date">
-      10.13 ~ 14
-    </span>
-
-  </div>
-
-  <small class="top-note">
-    GMARKET SELLER GUIDE
-  </small>
+  <span class="event-date">
+    10.13 ~ 14
+  </span>
 
 </header>
 
 
 
-<!-- ================= ENTRY ================= -->
+<!-- ENTRY -->
 
 <section
   class="entry"
@@ -1566,6 +1316,7 @@ footer{
   <button
     class="tap"
     id="tap"
+    type="button"
   >
 
     <span class="tap-dot">
@@ -1582,7 +1333,7 @@ footer{
 
 
 
-<!-- ================= CONTENT ================= -->
+<!-- CONTENT -->
 
 <main
   class="content"
@@ -1613,7 +1364,7 @@ footer{
 
 
 
-<!-- ================= ANSWERS ================= -->
+<!-- ANSWER -->
 
 <section class="answer">
 
@@ -1628,8 +1379,6 @@ footer{
 
   <div class="cards">
 
-
-    <!-- NEWSLETTER -->
 
     <a
       class="card"
@@ -1659,8 +1408,6 @@ footer{
 
 
 
-    <!-- EVENT -->
-
     <a
       class="card"
       href="#"
@@ -1688,8 +1435,6 @@ footer{
     </a>
 
 
-
-    <!-- KAKAO -->
 
     <a
       class="card"
@@ -1724,7 +1469,7 @@ footer{
 
 
 
-<!-- ================= CHANNEL ================= -->
+<!-- CHANNEL -->
 
 <section class="more">
 
@@ -1749,46 +1494,29 @@ footer{
       rel="noopener noreferrer"
     >
 
-      <div class="channel-top">
+      <div
+        class="channel-icon kakao"
+        aria-hidden="true"
+      >
 
-        <div
-          class="channel-icon kakao"
-          aria-hidden="true"
+        <svg
+          viewBox="0 0 48 48"
+          role="img"
         >
 
-          <svg
-            viewBox="0 0 48 48"
-            role="img"
-          >
+          <path
+            d="M24 8C14.1 8 6 14.4 6 22.3c0 5.1 3.4 9.6 8.5 12.1l-2.2 7.2c-.2.7.6 1.2 1.2.8l8.7-5.8c.6.1 1.2.1 1.8.1 9.9 0 18-6.4 18-14.4S33.9 8 24 8Z"
+            fill="#191919"
+          />
 
-            <path
-              d="M24 8C14.1 8 6 14.4 6 22.3c0 5.1 3.4 9.6 8.5 12.1l-2.2 7.2c-.2.7.6 1.2 1.2.8l8.7-5.8c.6.1 1.2.1 1.8.1 9.9 0 18-6.4 18-14.4S33.9 8 24 8Z"
-              fill="#191919"
-            />
-
-          </svg>
-
-        </div>
-
-        <span class="channel-arrow">
-          →
-        </span>
+        </svg>
 
       </div>
 
-
-      <div class="channel-copy">
-
-        <strong>
-          G마켓 비즈니스<br>
-          카카오톡 채널
-        </strong>
-
-        <span class="desc">
-          중요 소식 빠르게 받기
-        </span>
-
-      </div>
+      <strong class="channel-name">
+        G마켓 비즈니스<br>
+        카카오톡 채널
+      </strong>
 
     </a>
 
@@ -1803,55 +1531,38 @@ footer{
       rel="noopener noreferrer"
     >
 
-      <div class="channel-top">
+      <div
+        class="channel-icon edu"
+        aria-hidden="true"
+      >
 
-        <div
-          class="channel-icon edu"
-          aria-hidden="true"
+        <svg
+          viewBox="0 0 48 48"
+          role="img"
         >
 
-          <svg
-            viewBox="0 0 48 48"
-            role="img"
-          >
+          <rect
+            x="5"
+            y="11"
+            width="38"
+            height="26"
+            rx="8"
+            fill="#FF0033"
+          />
 
-            <rect
-              x="5"
-              y="11"
-              width="38"
-              height="26"
-              rx="8"
-              fill="#FF0033"
-            />
+          <path
+            d="M21 18.5 31 24l-10 5.5Z"
+            fill="#fff"
+          />
 
-            <path
-              d="M21 18.5 31 24l-10 5.5Z"
-              fill="#fff"
-            />
-
-          </svg>
-
-        </div>
-
-        <span class="channel-arrow">
-          →
-        </span>
+        </svg>
 
       </div>
 
-
-      <div class="channel-copy">
-
-        <strong>
-          G마켓 옥션<br>
-          판매자 교육센터
-        </strong>
-
-        <span class="desc">
-          무료 온라인 교육
-        </span>
-
-      </div>
+      <strong class="channel-name">
+        G마켓 옥션<br>
+        판매자 교육센터
+      </strong>
 
     </a>
 
@@ -1866,38 +1577,21 @@ footer{
       rel="noopener noreferrer"
     >
 
-      <div class="channel-top">
+      <div
+        class="channel-icon partner"
+        aria-hidden="true"
+      >
 
-        <div
-          class="channel-icon partner"
-          aria-hidden="true"
-        >
-
-          <span class="partner-g">
-            G
-          </span>
-
-        </div>
-
-        <span class="channel-arrow">
-          →
+        <span class="partner-g">
+          G
         </span>
 
       </div>
 
-
-      <div class="channel-copy">
-
-        <strong>
-          G마켓<br>
-          파트너센터
-        </strong>
-
-        <span class="desc">
-          가이드 · 혜택 · 판매 노하우
-        </span>
-
-      </div>
+      <strong class="channel-name">
+        G마켓<br>
+        파트너센터
+      </strong>
 
     </a>
 
@@ -1908,7 +1602,7 @@ footer{
 
 
 
-<!-- ================= OTHER TOPICS ================= -->
+<!-- OTHER -->
 
 <section class="other">
 
@@ -1934,10 +1628,6 @@ footer{
       href="#"
       aria-current="page"
     >
-
-      <span class="topic-check">
-        ✓
-      </span>
 
       <span class="topic-label">
 
@@ -1974,7 +1664,10 @@ footer{
 
       </span>
 
-      <span class="topic-arrow">
+      <span
+        class="topic-arrow"
+        aria-hidden="true"
+      >
         →
       </span>
 
@@ -2001,7 +1694,10 @@ footer{
 
       </span>
 
-      <span class="topic-arrow">
+      <span
+        class="topic-arrow"
+        aria-hidden="true"
+      >
         →
       </span>
 
@@ -2020,7 +1716,6 @@ footer{
 
 
 <script>
-
 (function(){
 
   var opened=false;
@@ -2038,30 +1733,21 @@ footer{
 
     opened=true;
 
-    entry.classList.add(
-      'is-pressed'
-    );
+    entry.classList.add('is-pressed');
 
 
     if(navigator.vibrate){
-
       navigator.vibrate(18);
-
     }
 
 
-    window.setTimeout(
-      function(){
+    window.setTimeout(function(){
 
-        document.body
-          .classList
-          .add('open');
+      document.body.classList.add('open');
 
-        window.scrollTo(0,0);
+      window.scrollTo(0,0);
 
-      },
-      180
-    );
+    },180);
 
   }
 
@@ -2103,8 +1789,8 @@ footer{
   );
 
 })();
-
 </script>
+
 
 </body>
 </html>
