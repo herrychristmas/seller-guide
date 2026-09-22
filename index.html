@@ -136,13 +136,97 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
  .other{padding-top:34px}.chips{grid-template-columns:1fr}.chip{font-size:15px;padding:15px}
  footer{padding-top:38px}
 }
+
+/* ===== V4 refinements ===== */
+.logo{font-size:15px;letter-spacing:.025em}.logo b{color:var(--green)}
+.hero{padding:36px 0 32px}
+.hero .grad{margin-bottom:18px}
+.hero h2{
+  font-size:clamp(36px,5.3vw,58px);
+  line-height:1.08;
+  max-width:920px;
+}
+.hero h2>span{display:block;white-space:nowrap}
+.answer{padding:36px 0 42px}
+.answer-head{margin-bottom:18px}
+.answer h3,.more h3{font-size:30px}
+.cards{gap:12px}
+.card,.card.featured{
+  min-height:226px;
+  background:#1b1b1b;
+  color:#fff;
+  border-color:#414141;
+}
+.card:hover,.card.featured:hover{background:#202020;border-color:#5b5b5b}
+.card-media,.featured .card-media{background:#242424;border-color:#363636}
+.card-media.placeholder:before,.featured .card-media.placeholder:before{color:#727272}
+.card-top,.featured .card-top{color:#8e948e}
+.card p,.featured p{color:#a2a7a2}
+.card .arrow,.featured .arrow{border-color:#4b4b4b}
+.card strong{font-size:21px}
+.more{padding:34px 0 38px;border-top:1px solid #505050}
+.more-head{margin-bottom:16px}
+.tip{
+  padding:18px 20px;
+  min-height:0;
+  justify-content:center;
+  background:linear-gradient(135deg,rgba(0,196,0,.14),rgba(63,100,255,.08)),#1a1d1a;
+}
+.tip h4{font-size:21px;margin:0 0 7px;line-height:1.28}
+.tip p{font-size:13px;line-height:1.48}
+.other{padding:32px 0 0;border-top:1px solid #505050}
+.other-head{margin-bottom:14px}
+.other h3{font-size:23px;margin:0}
+.chips{
+  display:flex;
+  gap:9px;
+  overflow-x:auto;
+  padding:1px 0 7px;
+  scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.chips::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto;
+  min-width:max-content;
+  padding:13px 15px;
+  font-size:14px;
+  border-color:#484848;
+  background:#1b1b1b;
+}
+@media(max-width:720px){
+ .top small{display:none}
+ .hero{padding:28px 0 27px}
+ .hero h2{
+   font-size:clamp(30px,8.3vw,40px);
+   line-height:1.1;
+   letter-spacing:-.06em;
+ }
+ .hero h2>span{white-space:nowrap}
+ .answer{padding:30px 0 34px}
+ .answer-head{margin-bottom:16px}
+ .answer h3,.more h3{font-size:25px}
+ .card,.card.featured{min-height:0}
+ .more{padding:30px 0 33px}
+ .more-grid{gap:10px}
+ .tip{padding:17px 18px}
+ .tip h4{font-size:20px}
+ .other{padding-top:29px}
+ .other h3{font-size:21px}
+ .chips{margin-right:-20px;padding-right:20px}
+ .chip{font-size:14px;padding:12px 14px}
+}
+@media(max-width:390px){
+ .hero h2{font-size:clamp(28px,7.8vw,34px)}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
 <header class="top">
-  <div class="logo"><b>G</b>market · Seller Guide</div>
-  <small>SELLER COMMUNICATION</small>
+  <div class="logo">NEXT <b>STAGE</b></div>
+  <small>GMARKET SELLER GUIDE</small>
 </header>
 
 <section class="entry" id="entry" role="button" tabindex="0" aria-label="판매 소식 가이드 열기">
@@ -157,18 +241,18 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
 <main class="content" id="content">
  <section class="hero">
   <div class="grad"></div>
-  <div class="eyebrow">YOUR QUESTION</div>
-  <h2>놓치기 쉬운 <em>판매 소식,</em><br>챙겨보고 계신가요?</h2>
+  
+  <h2><span>놓치기 쉬운 <em>판매 소식,</em></span><span>챙겨보고 계신가요?</span></h2>
  </section>
 
  <section class="answer">
   <div class="answer-head">
-   <div class="kicker">START HERE</div>
+   
    <h3>이 3가지를 먼저 확인해보세요</h3>
   </div>
 
   <div class="cards">
-   <a class="card featured" href="#">
+   <a class="card" href="#">
     <div class="card-media placeholder"><!-- 이미지 사용 시: <img src="이미지주소" alt=""> / 영상 사용 시 video 태그 --></div>
     <div class="card-top">01 · NEWS</div>
     <strong>판매자 뉴스레터<br>한 번에 확인하기</strong>
@@ -196,7 +280,7 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
 
  <section class="more">
   <div class="more-head">
-   <div class="kicker">GO FURTHER</div>
+   
    <h3>조금 더 살펴볼 수 있어요</h3>
   </div>
   <div class="more-grid">
@@ -207,18 +291,18 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
    </div>
    <aside class="tip">
     <div>
-      <small>SELLER TIP</small>
+      
       <h4>찾는 소식보다<br>받는 소식을 늘려보세요.</h4>
-      <p>뉴스레터와 카카오채널을 연결해두면 새로운 판매 기회를 더 빠르게 확인할 수 있어요.</p>
+      <p>뉴스레터와 카카오채널을 연결해두면 중요한 판매 소식을 더 빠르게 확인할 수 있어요.</p>
     </div>
-    <div class="tip-foot">파트너센터 · 교육센터 · 카카오채널</div>
+    
    </aside>
   </div>
  </section>
 
  <section class="other">
    <div class="other-head">
-    <div><div class="kicker">ANOTHER QUESTION</div><h3>다른 고민도 확인해보세요</h3></div>
+    <div><h3>다른 고민도 확인해보세요</h3></div>
    </div>
    <div class="chips">
     <a class="chip" href="#">매출을 더 올리고 싶어요</a>
@@ -228,7 +312,7 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
    </div>
  </section>
 
- <footer><span>Gmarket Seller Communication</span><span>Seller Guide</span></footer>
+ <footer><span>NEXT STAGE</span><span>Gmarket Seller Guide</span></footer>
 </main>
 </div>
 
