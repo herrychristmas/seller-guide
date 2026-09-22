@@ -220,6 +220,120 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
  .hero h2{font-size:clamp(28px,7.8vw,34px)}
 }
 
+
+/* ===== V5: fixed three-column solution cards ===== */
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+.card,.card.featured{
+  min-width:0;
+  min-height:270px;
+  padding:16px;
+  border-radius:16px;
+  background:#1b1b1b;
+  border:1px solid #414141;
+  color:#fff;
+}
+.need{
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:9px 8px;
+  margin:-1px -1px 14px;
+  border-radius:11px;
+  background:#242724;
+  border:1px solid #363b36;
+  color:#cbd0cb;
+  font-size:13px;
+  line-height:1.35;
+  font-weight:700;
+  letter-spacing:-.025em;
+}
+.card-icon{
+  height:54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 0 10px;
+  font-size:34px;
+  line-height:1;
+}
+.card-top{
+  margin-bottom:7px;
+  font-size:11px;
+}
+.card strong{
+  font-size:19px;
+  line-height:1.3;
+}
+.card-foot{
+  padding-top:14px;
+  font-size:12px;
+  gap:6px;
+}
+.card-foot>span:first-child{
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+.arrow{
+  flex:0 0 30px;
+  width:30px;height:30px;
+}
+@media(max-width:720px){
+  .cards{
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+    gap:7px;
+  }
+  .card,.card.featured{
+    min-height:218px;
+    padding:10px 8px 9px;
+    border-radius:13px;
+  }
+  .need{
+    min-height:47px;
+    padding:7px 5px;
+    margin:0 0 10px;
+    border-radius:9px;
+    font-size:10px;
+    line-height:1.28;
+  }
+  .card-icon{
+    height:38px;
+    margin-bottom:8px;
+    font-size:27px;
+  }
+  .card-top{
+    font-size:9px;
+    margin-bottom:6px;
+    white-space:nowrap;
+  }
+  .card strong{
+    font-size:clamp(13px,3.65vw,16px);
+    line-height:1.28;
+    letter-spacing:-.045em;
+  }
+  .card-foot{
+    padding-top:10px;
+    font-size:10px;
+  }
+  .arrow{
+    display:none;
+  }
+}
+@media(max-width:380px){
+  .app{padding-left:14px;padding-right:14px}
+  .cards{gap:5px}
+  .card,.card.featured{padding:9px 6px 8px}
+  .need{font-size:9px;padding-left:3px;padding-right:3px}
+  .card strong{font-size:12.5px}
+  .card-foot{font-size:9px}
+}
+
 </style>
 </head>
 <body>
@@ -253,26 +367,29 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
 
   <div class="cards">
    <a class="card" href="#">
-    <div class="card-media placeholder"><!-- 이미지 사용 시: <img src="이미지주소" alt=""> / 영상 사용 시 video 태그 --></div>
+    <div class="need">소식을 한 번에 보고 싶다면</div>
+    <div class="card-icon" aria-hidden="true">📰</div>
     <div class="card-top">01 · NEWS</div>
     <strong>판매자 뉴스레터<br>한 번에 확인하기</strong>
-    <p>프로모션과 주요 판매 소식을 한 번에 확인해보세요.</p>
+    
     <div class="card-foot"><span>뉴스레터 보기</span><span class="arrow">→</span></div>
    </a>
 
    <a class="card" href="#">
-    <div class="card-media placeholder"></div>
+    <div class="need">지금 받을 혜택이 궁금하다면</div>
+    <div class="card-icon" aria-hidden="true">🎁</div>
     <div class="card-top">02 · UPDATE</div>
     <strong>지금 진행 중인<br>판매 기회 확인하기</strong>
-    <p>기획전·이벤트·지원 혜택을 바로 확인해보세요.</p>
+    
     <div class="card-foot"><span>파트너센터 새소식</span><span class="arrow">→</span></div>
    </a>
 
    <a class="card" href="#">
-    <div class="card-media placeholder"></div>
+    <div class="need">중요한 안내를 놓치고 싶지 않다면</div>
+    <div class="card-icon" aria-hidden="true">💬</div>
     <div class="card-top">03 · ALERT</div>
     <strong>중요한 소식은<br>메시지로 받아보기</strong>
-    <p>꼭 필요한 안내를 카카오채널에서 빠르게 받아보세요.</p>
+    
     <div class="card-foot"><span>카카오채널 추가</span><span class="arrow">→</span></div>
    </a>
   </div>
