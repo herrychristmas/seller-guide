@@ -514,6 +514,137 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
  .chip{padding:9px 4px;font-size:9px}
 }
 
+
+/* ===== V8: horizontal answers + channel cards ===== */
+.answer{padding-bottom:38px}
+.answer h3{font-size:25px}
+.cards{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:9px;
+}
+.card,.card.featured{
+  min-height:0;
+  padding:17px 18px;
+  border-radius:14px;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  background:#1b1b1b;
+  border:1px solid #414141;
+}
+.card-copy{min-width:0;display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+.card-top{font-size:11px;color:var(--green);font-weight:900;margin:0 0 5px}
+.card .need{
+  display:block;
+  min-height:0;
+  padding:0;
+  margin:0 0 4px;
+  border:0;
+  background:none;
+  color:#8f958f;
+  font-size:12px;
+  font-weight:600;
+  text-align:left;
+}
+.card strong{font-size:20px;line-height:1.25;text-align:left}
+.card .mini{margin-top:5px;color:#a0a5a0;font-size:12px;line-height:1.35}
+.card-symbol{
+  flex:0 0 52px;
+  width:52px;height:52px;
+  display:grid;place-items:center;
+  border-radius:14px;
+  background:#242824;
+  font-size:27px;
+}
+.more{padding:32px 0 36px;border-top:1px solid #505050}
+.more h3{font-size:20px}
+.channel-cards{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:9px;
+}
+.channel-card{
+  min-width:0;
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) auto;
+  gap:11px;
+  align-items:center;
+  padding:14px;
+  border:1px solid #414141;
+  border-radius:13px;
+  background:#1b1b1b;
+}
+.channel-icon{
+  width:42px;height:42px;border-radius:11px;
+  display:grid;place-items:center;
+  font-size:11px;font-weight:950;
+}
+.channel-icon.kakao{background:#fee500;color:#191919}
+.channel-icon.edu{background:#f3f3f3;color:#ff4b4b;font-size:15px}
+.channel-icon.partner{background:#f3f3f3;color:#00a83a;font-size:20px}
+.channel-card strong{display:block;font-size:14px;line-height:1.25}
+.channel-card span{display:block;margin-top:3px;color:#929892;font-size:10px;line-height:1.3}
+.channel-card>b{font-size:16px;color:#8b918b}
+.other{padding-top:30px}
+.other h3{font-size:18px}
+.chips{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:7px;
+  overflow:visible;
+  padding:0;
+}
+.chip{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:7px;
+  padding:12px 11px;
+  border:1px solid #414141;
+  border-radius:11px;
+  background:#191919;
+  font-size:11px;
+  line-height:1.3;
+  text-align:left;
+  white-space:normal;
+}
+.chip:after{display:none}
+.chip b{flex:0 0 auto;color:#858b85}
+@media(max-width:720px){
+ .answer h3{font-size:22px}
+ .card,.card.featured{padding:14px 15px;gap:12px}
+ .card strong{font-size:18px}
+ .card .need{font-size:11px}
+ .card .mini{font-size:10px}
+ .card-symbol{width:46px;height:46px;flex-basis:46px;font-size:24px}
+ .more{padding:29px 0 32px}
+ .more h3{font-size:17px}
+ .channel-cards{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .channel-card{
+   grid-template-columns:34px minmax(0,1fr);
+   gap:7px;padding:10px 7px;
+ }
+ .channel-icon{width:34px;height:34px;border-radius:9px;font-size:9px}
+ .channel-icon.edu{font-size:12px}.channel-icon.partner{font-size:17px}
+ .channel-card strong{font-size:11px}
+ .channel-card span{font-size:8px}
+ .channel-card>b{display:none}
+ .other h3{font-size:16px}
+ .chips{grid-template-columns:repeat(4,minmax(0,1fr));gap:5px}
+ .chip{padding:10px 6px;font-size:9px;justify-content:center;text-align:center}
+ .chip b{display:none}
+}
+@media(max-width:380px){
+ .channel-card{grid-template-columns:1fr;text-align:center;justify-items:center}
+ .channel-card span{display:none}
+ .chips{gap:4px}
+ .chip{font-size:8.5px;padding:9px 4px}
+}
+
 </style>
 </head>
 <body>
@@ -547,62 +678,67 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
 
   <div class="cards">
    <a class="card" href="#">
-    <div class="need">소식을 한 번에 보고 싶다면</div>
-    <div class="card-icon" aria-hidden="true">📰</div>
-    <div class="card-top">01 · NEWS</div>
-    <strong>판매자 뉴스레터<br>한 번에 확인하기</strong>
-    
-    <div class="card-foot"><span>뉴스레터 보기</span><span class="arrow">→</span></div>
+    <div class="card-copy">
+      <div class="card-top">01</div>
+      <span class="need">소식을 한 번에 보고 싶다면</span>
+      <strong>판매자 뉴스레터</strong>
+      <span class="mini">프로모션 · 주요 판매 소식</span>
+    </div>
+    <div class="card-symbol" aria-hidden="true">📰</div>
    </a>
-
    <a class="card" href="#">
-    <div class="need">지금 받을 혜택이 궁금하다면</div>
-    <div class="card-icon" aria-hidden="true">🎁</div>
-    <div class="card-top">02 · UPDATE</div>
-    <strong>지금 진행 중인<br>판매 기회 확인하기</strong>
-    
-    <div class="card-foot"><span>파트너센터 새소식</span><span class="arrow">→</span></div>
+    <div class="card-copy">
+      <div class="card-top">02</div>
+      <span class="need">지금 받을 혜택이 궁금하다면</span>
+      <strong>새소식 & 이벤트</strong>
+      <span class="mini">기획전 · 이벤트 · 지원 혜택</span>
+    </div>
+    <div class="card-symbol" aria-hidden="true">🎁</div>
    </a>
-
    <a class="card" href="#">
-    <div class="need">중요한 안내를 놓치고 싶지 않다면</div>
-    <div class="card-icon" aria-hidden="true">💬</div>
-    <div class="card-top">03 · ALERT</div>
-    <strong>중요한 소식은<br>메시지로 받아보기</strong>
-    
-    <div class="card-foot"><span>카카오채널 추가</span><span class="arrow">→</span></div>
+    <div class="card-copy">
+      <div class="card-top">03</div>
+      <span class="need">중요한 안내를 놓치고 싶지 않다면</span>
+      <strong>카카오채널 알림</strong>
+      <span class="mini">중요 공지 · 맞춤 소식</span>
+    </div>
+    <div class="card-symbol" aria-hidden="true">💬</div>
    </a>
   </div>
  </section>
 
  <section class="more">
   <div class="more-head">
-   
-   <h3>조금 더 살펴볼 수 있어요</h3>
+    <h3>필요한 채널에서 바로 확인해보세요</h3>
   </div>
-  <div class="more-grid">
-   <aside class="tip">
-    <div>
-      
-      <h4>찾는 소식보다<br>받는 소식을 늘려보세요.</h4>
-      <p>뉴스레터와 카카오채널을 연결해두면 중요한 판매 소식을 더 빠르게 확인할 수 있어요.</p>
-    </div>
-    
-   </aside>
-   <div class="list">
-    <a class="row" href="#"><span class="n">01</span><div><strong>판매 인사이트 보기</strong><span class="desc">시장과 카테고리 흐름 확인</span></div>
+  <div class="channel-cards">
+    <a class="channel-card" href="#">
+      <div class="channel-icon kakao">TALK</div>
+      <div><strong>카카오채널</strong><span>중요 소식 빠르게 받기</span></div>
+      <b>→</b>
+    </a>
+    <a class="channel-card" href="#">
+      <div class="channel-icon edu">▶</div>
+      <div><strong>교육센터</strong><span>무료 온라인 교육</span></div>
+      <b>→</b>
+    </a>
+    <a class="channel-card" href="#">
+      <div class="channel-icon partner">G</div>
+      <div><strong>파트너센터</strong><span>가이드 · 혜택 · 판매 노하우</span></div>
+      <b>→</b>
+    </a>
   </div>
  </section>
 
  <section class="other">
    <div class="other-head">
-    <div><h3>다른 고민도 확인해보세요</h3></div>
+    <div><h3>다른 고민도 이어서 해결해보세요</h3></div>
    </div>
    <div class="chips">
-    <a class="chip" href="#">매출을 더 올리고 싶어요</a>
-    <a class="chip" href="#">판매 방법이 아직 어려워요</a>
-    <a class="chip" href="#">요즘 셀러 트렌드가 궁금해요</a>
-    <a class="chip" href="#">새로운 판매 기회를 찾고 있어요</a>
+    <a class="chip" href="#"><span>매출을 더 올리고 싶어요</span><b>→</b></a>
+    <a class="chip" href="#"><span>판매 방법이 아직 어려워요</span><b>→</b></a>
+    <a class="chip" href="#"><span>요즘 셀러 트렌드가 궁금해요</span><b>→</b></a>
+    <a class="chip" href="#"><span>새로운 판매 기회를 찾고 있어요</span><b>→</b></a>
    </div>
  </section>
 
