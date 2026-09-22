@@ -794,12 +794,87 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
   }
 }
 
+
+/* ===== V10 ===== */
+.brand-logo{
+  display:flex;
+  align-items:center;
+  width:112px;
+  height:38px;
+  overflow:hidden;
+}
+.brand-logo img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:left center;
+}
+.other{padding-bottom:4px}
+.topic-switcher{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+}
+.topic{
+  min-width:0;
+  min-height:70px;
+  padding:12px 13px;
+  border:1px solid #414141;
+  border-radius:12px;
+  background:#191919;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  color:#c8ccc8;
+  font-size:12px;
+  line-height:1.35;
+  font-weight:750;
+  text-align:left;
+  transition:.16s ease;
+}
+.topic:hover{border-color:#626762;background:#202020}
+.topic b{color:#7f867f;font-size:15px;flex:0 0 auto}
+.topic.active{
+  border-color:rgba(0,196,0,.62);
+  background:linear-gradient(135deg,rgba(0,196,0,.14),rgba(0,196,0,.04)),#191d19;
+  color:#fff;
+  cursor:default;
+}
+.topic-check{
+  flex:0 0 25px;
+  width:25px;height:25px;
+  display:grid;place-items:center;
+  border-radius:50%;
+  background:var(--green);
+  color:#081108;
+  font-size:12px;
+  font-weight:950;
+}
+@media(max-width:720px){
+ .brand-logo{width:94px;height:32px}
+ .topic-switcher{grid-template-columns:repeat(3,minmax(0,1fr));gap:5px}
+ .topic{
+   min-height:67px;
+   padding:10px 8px;
+   font-size:10px;
+   gap:5px;
+ }
+ .topic-check{width:21px;height:21px;flex-basis:21px;font-size:10px}
+ .topic b{font-size:12px}
+}
+@media(max-width:360px){
+ .topic{padding:9px 6px;font-size:9px}
+ .topic-check{display:none}
+}
+
 </style>
 </head>
 <body>
 <div class="app">
 <header class="top">
-  <div class="logo">NEXT <b>STAGE</b></div>
+  <a class="brand-logo" href="#" aria-label="NEXT STAGE"><img src="https://cdn.imweb.me/upload/S20231123121fb6d98a452/c93187d4aba1a.png" alt="NEXT STAGE"></a>
   <small>GMARKET SELLER GUIDE</small>
 </header>
 
@@ -861,17 +936,17 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
     <h3>필요한 채널에서 바로 확인해보세요</h3>
   </div>
   <div class="channel-cards">
-    <a class="channel-card" href="#">
+    <a class="channel-card" href="https://pf.kakao.com/_xdxnxbSb" target="_blank" rel="noopener noreferrer">
       <div class="channel-icon kakao">TALK</div>
       <div><strong>카카오채널</strong><span>중요 소식 빠르게 받기</span></div>
       <b>→</b>
     </a>
-    <a class="channel-card" href="#">
+    <a class="channel-card" href="https://www.youtube.com/@gmarket_edu" target="_blank" rel="noopener noreferrer">
       <div class="channel-icon edu">▶</div>
-      <div><strong>교육센터</strong><span>무료 온라인 교육</span></div>
+      <div><strong>유튜브 교육센터</strong><span>무료 온라인 교육</span></div>
       <b>→</b>
     </a>
-    <a class="channel-card" href="#">
+    <a class="channel-card" href="https://partner.gmarket.com/" target="_blank" rel="noopener noreferrer">
       <div class="channel-icon partner">G</div>
       <div><strong>파트너센터</strong><span>가이드 · 혜택 · 판매 노하우</span></div>
       <b>→</b>
@@ -883,15 +958,23 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
    <div class="other-head">
     <div><h3>다른 고민도 이어서 해결해보세요</h3></div>
    </div>
-   <div class="chips">
-    <a class="chip" href="#"><span>매출을 더 올리고 싶어요</span><b>→</b></a>
-    <a class="chip" href="#"><span>판매 방법이 아직 어려워요</span><b>→</b></a>
-    <a class="chip" href="#"><span>요즘 셀러 트렌드가 궁금해요</span><b>→</b></a>
-    <a class="chip" href="#"><span>새로운 판매 기회를 찾고 있어요</span><b>→</b></a>
+   <div class="topic-switcher" aria-label="고민 선택">
+    <a class="topic active" href="./?topic=news" aria-current="page">
+      <span class="topic-check">✓</span>
+      <span>판매 소식을<br>놓치고 싶지 않아요</span>
+    </a>
+    <a class="topic" href="./?topic=sales">
+      <span>매출을 더<br>올리고 싶어요</span>
+      <b>→</b>
+    </a>
+    <a class="topic" href="./?topic=growth">
+      <span>새로운 판매 기회를<br>찾고 싶어요</span>
+      <b>→</b>
+    </a>
    </div>
  </section>
 
- <footer><span>NEXT STAGE</span><span>Gmarket Seller Guide</span></footer>
+ 
 </main>
 </div>
 
@@ -917,5 +1000,21 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
   });
 })();
 </script>
+
+<script>
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var topic = params.get('topic') || 'news';
+  document.querySelectorAll('.topic').forEach(function(el){
+    var url = new URL(el.href, window.location.href);
+    var own = url.searchParams.get('topic') || 'news';
+    var selected = own === topic;
+    el.classList.toggle('active', selected);
+    if(selected) el.setAttribute('aria-current','page');
+    else el.removeAttribute('aria-current');
+  });
+})();
+</script>
+
 </body>
 </html>
