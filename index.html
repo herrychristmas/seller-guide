@@ -962,6 +962,99 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
  .channel-card strong{font-size:9.5px}
 }
 
+
+/* ===== V12: channel icons + two-line topic labels ===== */
+.channel-icon{
+  width:46px;
+  height:46px;
+  border-radius:12px;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+  flex:0 0 46px;
+}
+.channel-icon svg{
+  display:block;
+  width:34px;
+  height:34px;
+}
+.channel-icon.kakao{
+  background:#FEE500;
+}
+.channel-icon.kakao svg{
+  width:36px;
+  height:36px;
+}
+.channel-icon.edu{
+  background:#fff;
+}
+.channel-icon.edu svg{
+  width:39px;
+  height:39px;
+}
+.channel-icon.partner{
+  background:#EEF4FF;
+}
+.partner-g{
+  font-size:25px;
+  line-height:1;
+  font-weight:950;
+  color:#3F64FF;
+  font-family:Arial,Helvetica,sans-serif;
+}
+.topic{
+  min-height:72px;
+}
+.topic-label{
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:1px;
+}
+.topic-label i{
+  display:block;
+  font-style:normal;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.topic.active .topic-label{
+  flex:1 1 auto;
+}
+@media(max-width:720px){
+ .channel-icon{
+   width:40px;
+   height:40px;
+   flex-basis:40px;
+ }
+ .channel-icon.kakao svg{width:32px;height:32px}
+ .channel-icon.edu svg{width:36px;height:36px}
+ .partner-g{font-size:22px}
+ .topic{
+   min-height:68px;
+   padding:10px 7px;
+ }
+ .topic-label{
+   font-size:10px;
+   line-height:1.28;
+ }
+ .topic-check{
+   width:20px;height:20px;flex-basis:20px;
+ }
+}
+@media(max-width:360px){
+ .topic{
+   padding:9px 5px;
+ }
+ .topic-label{
+   font-size:8.8px;
+ }
+ .topic-check{
+   display:none;
+ }
+}
+
 </style>
 </head>
 <body>
@@ -1030,17 +1123,28 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
   </div>
   <div class="channel-cards">
     <a class="channel-card" href="https://pf.kakao.com/_xdxnxbSb" target="_blank" rel="noopener noreferrer">
-      <div class="channel-icon kakao" aria-hidden="true"><span class="kakao-bubble">TALK</span></div>
+      <div class="channel-icon kakao" aria-hidden="true">
+        <svg viewBox="0 0 48 48" role="img">
+          <path d="M24 8C14.1 8 6 14.4 6 22.3c0 5.1 3.4 9.6 8.5 12.1l-2.2 7.2c-.2.7.6 1.2 1.2.8l8.7-5.8c.6.1 1.2.1 1.8.1 9.9 0 18-6.4 18-14.4S33.9 8 24 8Z" fill="#191919"/>
+        </svg>
+      </div>
       <div><strong>G마켓 비즈니스<br>카카오톡 채널</strong><span>중요 소식 빠르게 받기</span></div>
       <b>→</b>
     </a>
     <a class="channel-card" href="https://www.youtube.com/@gmarket_edu" target="_blank" rel="noopener noreferrer">
-      <div class="channel-icon edu" aria-hidden="true"><span class="youtube-play">▶</span></div>
+      <div class="channel-icon edu" aria-hidden="true">
+        <svg viewBox="0 0 48 48" role="img">
+          <rect x="5" y="11" width="38" height="26" rx="8" fill="#FF0033"/>
+          <path d="M21 18.5 31 24l-10 5.5Z" fill="#fff"/>
+        </svg>
+      </div>
       <div><strong>G마켓 옥션<br>판매자 교육센터</strong><span>무료 온라인 교육</span></div>
       <b>→</b>
     </a>
     <a class="channel-card" href="https://partner.gmarket.com/" target="_blank" rel="noopener noreferrer">
-      <div class="channel-icon partner" aria-hidden="true">G</div>
+      <div class="channel-icon partner" aria-hidden="true">
+        <span class="partner-g">G</span>
+      </div>
       <div><strong>G마켓<br>파트너센터</strong><span>가이드 · 혜택 · 판매 노하우</span></div>
       <b>→</b>
     </a>
@@ -1054,14 +1158,14 @@ footer{padding-top:44px;display:flex;justify-content:space-between;color:#696969
    <div class="topic-switcher" aria-label="고민 선택">
     <a class="topic active" href="#" aria-current="page">
       <span class="topic-check">✓</span>
-      <span>판매 소식을<br>놓치고 싶지 않아요</span>
+      <span class="topic-label"><i>판매 소식을</i><i>놓치고 싶지 않아요</i></span>
     </a>
     <a class="topic" href="seller_guide_sales.html">
-      <span>매출을 더<br>올리고 싶어요</span>
+      <span class="topic-label"><i>매출을 더</i><i>올리고 싶어요</i></span>
       <b>→</b>
     </a>
     <a class="topic" href="seller_guide_growth.html">
-      <span>새로운 판매 기회를<br>찾고 싶어요</span>
+      <span class="topic-label"><i>새로운 판매 기회를</i><i>찾고 싶어요</i></span>
       <b>→</b>
     </a>
    </div>
